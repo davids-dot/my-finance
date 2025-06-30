@@ -1,0 +1,32 @@
+# pyproject.toml
+
+# 这个部分定义了构建项目所需的工具。
+# 对于大多数应用和库，使用 setuptools 是一个安全且标准的选择。
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+# 这个部分包含了你项目的所有元数据和依赖。
+[project]
+# --- 项目元数据 (请根据你的项目修改) ---
+name = "my-finance"  # 你的项目名称
+version = "0.1.0"             # 你的项目版本
+description = "my finance, to earn money" # 项目描述
+authors = [
+    { name = "davidsta", email = "davidsta@qq.com" },
+]
+requires-python = ">=3.12" # 指定项目兼容的Python版本
+
+# --- 核心依赖 (这里是 requirements.txt 的等价部分) ---
+dependencies = [
+    "requests>=2.32.0",
+    "pandas>=2.0.0",
+    "pysnowball>=0.1.5",
+]
+
+# 你还可以在这里定义可选依赖，比如用于测试或开发的包
+# [project.optional-dependencies]
+# dev = [
+#     "pytest",
+#     "ruff",
+# ]
