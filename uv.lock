@@ -60,6 +60,15 @@ wheels = [
 ]
 
 [[package]]
+name = "dbutils"
+version = "3.1.1"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/da/d5/ad1aa0fd519d328405c7c549174a71d6480216da05187dbc9cb413bad6ce/dbutils-3.1.1.tar.gz", hash = "sha256:ade79fbc5786d7496d4138722fbca24340cf7c73b5d66df05296f656ff086bbf", size = 95821 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/f8/18/e4261a2b96d1387c16273dccf74bb88e3ecfe7061ea589655426aca6c3d1/dbutils-3.1.1-py3-none-any.whl", hash = "sha256:edc8ebd8445094c335d52e2bcbcf9f7dcc54d7a294adf7d01a8baf21924317f5", size = 32866 },
+]
+
+[[package]]
 name = "idna"
 version = "3.10"
 source = { registry = "https://pypi.org/simple" }
@@ -73,16 +82,22 @@ name = "my-finance"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [
+    { name = "dbutils" },
     { name = "pandas" },
+    { name = "pymysql" },
     { name = "pysnowball" },
     { name = "requests" },
+    { name = "sonyflake-py" },
 ]
 
 [package.metadata]
 requires-dist = [
+    { name = "dbutils", specifier = ">=3.1.1" },
     { name = "pandas", specifier = ">=2.0.0" },
+    { name = "pymysql", specifier = ">=1.1.1" },
     { name = "pysnowball", specifier = ">=0.1.5" },
     { name = "requests", specifier = ">=2.32.0" },
+    { name = "sonyflake-py", specifier = ">=1.3.0" },
 ]
 
 [[package]]
@@ -161,6 +176,15 @@ wheels = [
 ]
 
 [[package]]
+name = "pymysql"
+version = "1.1.1"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/b3/8f/ce59b5e5ed4ce8512f879ff1fa5ab699d211ae2495f1adaa5fbba2a1eada/pymysql-1.1.1.tar.gz", hash = "sha256:e127611aaf2b417403c60bf4dc570124aeb4a57f5f37b8e95ae399a42f904cd0", size = 47678 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/0c/94/e4181a1f6286f545507528c78016e00065ea913276888db2262507693ce5/PyMySQL-1.1.1-py3-none-any.whl", hash = "sha256:4de15da4c61dc132f4fb9ab763063e693d521a80fd0e87943b9a453dd4c19d6c", size = 44972 },
+]
+
+[[package]]
 name = "pysnowball"
 version = "0.1.5"
 source = { registry = "https://pypi.org/simple" }
@@ -216,6 +240,15 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/94/e7/b2c673351809dca68a0e064b6af791aa332cf192da575fd474ed7d6f16a2/six-1.17.0.tar.gz", hash = "sha256:ff70335d468e7eb6ec65b95b99d3a2836546063f63acc5171de367e834932a81", size = 34031 }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/b7/ce/149a00dd41f10bc29e5921b496af8b574d8413afcd5e30dfa0ed46c2cc5e/six-1.17.0-py2.py3-none-any.whl", hash = "sha256:4721f391ed90541fddacab5acf947aa0d3dc7d27b2e1e8eda2be8970586c3274", size = 11050 },
+]
+
+[[package]]
+name = "sonyflake-py"
+version = "1.3.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/4c/6d/fe8202f8c3c9a1b3fe10d0b5b6bfaf809a71e5fc52af1c09e0c2e6995be5/sonyflake-py-1.3.0.tar.gz", hash = "sha256:1445245f89fa18f25506ab1ff03c49835d9ec3eadb34adf1e5e2894e52202777", size = 4913 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/a9/8f/2fa1e7c00a14f0b66bdd2403b7d902676a91f0ddc13e2e7f66ea55f725c3/sonyflake_py-1.3.0-py3-none-any.whl", hash = "sha256:5433acfcd8177effa79511246a52f30b37ec773d9e2cec1a4733c57a45a18820", size = 5417 },
 ]
 
 [[package]]

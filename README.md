@@ -22,3 +22,13 @@ uv pip install requests pandas
 ```bash
 uv run python main.py
 ```
+
+
+#### 运行其他
+```bash
+uv run python src/my_finance/strategy_engine/stock_selecter.py
+```
+
+```bash
+uv run python src/my_finance/strategy_engine/single_watcher.py
+```

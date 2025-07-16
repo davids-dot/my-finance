@@ -1,44 +1,32 @@
-import requests
+from time import sleep
 
-cookies = {
-    'xqat': '59b7af07e856e0cbbe6a1db79e23dedd18b4d054',
-}
+from my_finance.data_center import stock_dao, stock_client
+from my_finance.data_center.stock_client import PAGE_SIZE
 
-headers = {
-    'accept': 'application/json, text/plain, */*',
-    'accept-language': 'zh-CN,zh;q=0.9,ko;q=0.8,en;q=0.7',
-    'cache-control': 'no-cache',
-    'origin': 'https://xueqiu.com',
-    'pragma': 'no-cache',
-    'priority': 'u=1, i',
-    'referer': 'https://xueqiu.com/',
-    'sec-ch-ua': '"Google Chrome";v="137", "Chromium";v="137", "Not/A)Brand";v="24"',
-    'sec-ch-ua-mobile': '?0',
-    'sec-ch-ua-platform': '"macOS"',
-    'sec-fetch-dest': 'empty',
-    'sec-fetch-mode': 'cors',
-    'sec-fetch-site': 'same-site',
-    'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36',
-}
 
-params = {
-    'page': '1',
-    'size': '30',
-    'order': 'desc',
-    'order_by': 'percent',
-    'market': 'CN',
-    'type': 'sh_sz',
-}
+def fetch_and_save_stock_data(page_no) -> bool:
+    try:
+        stock_list = stock_client.fetch_stock_data(page_no)
+        if not stock_list:
+            print("No stock list found in the response.")
+            return False
+        stock_dao.batch_insert_quotes(stock_list)
+        if len(stock_list) < PAGE_SIZE:
+            return False
+        return True
+    except Exception as e:
+        print(f"Failed to parse JSON response: {e}")
+        return False
 
 
 def main():
-    response = requests.get(
-        'https://stock.xueqiu.com/v5/stock/screener/quote/list.json',
-        params=params,
-        cookies=cookies,
-        headers=headers,
-    )
-    print(response.json())
+    page_no = 0
+    while True:
+        page_no += 1
+        has_next = fetch_and_save_stock_data(page_no)
+        if not has_next:
+            break
+        sleep(5)
 
 
 if __name__ == '__main__':
